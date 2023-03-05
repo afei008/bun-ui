@@ -1,0 +1,40 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="./dist/bun-ui.css" />
+        <style>
+            .palette {
+                height: 100px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .palette:nth-child(1) {
+                background: var(--color-primary);
+            }
+            .palette:nth-child(2) {
+                background: var(--color-secondary);
+            }
+            .palette:nth-child(3) {
+                background: var(--color-success);
+            }
+            .palette:nth-child(4) {
+                background: var(--color-warning);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="b-row">
+            <div class="palette b-col-3">#e7708a</div>
+            <div class="palette b-col-3">#77c1bf</div>
+            <div class="palette b-col-3">#70e683</div>
+            <div class="palette b-col-3">#e6e082</div>
+        </div>
+    </body>
+</html>

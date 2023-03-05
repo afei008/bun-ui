@@ -1,0 +1,9 @@
+/** @format */
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary);
+    height: 50px;
+}

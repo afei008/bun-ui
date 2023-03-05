@@ -1,0 +1,10 @@
+/** @format */
+
+@use './var/index' as VAR;
+
+:root {
+    @include VAR.createColor();
+    @include VAR.createBorderColor();
+    @include VAR.createTextColor();
+    @include VAR.createShadowColor();
+}

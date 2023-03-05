@@ -1,0 +1,176 @@
+/** @format */
+
+// Buttons
+
+@use './var/index.scss' as VAR;
+
+.b-btn {
+    position: relative;
+    box-sizing: border-box;
+    display: inline-block;
+    padding: VAR.$btn-padding;
+    font-size: VAR.$btn-font-size;
+    line-height: VAR.$btn-line-height;
+    color: var(--text-color-5);
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background: #fff;
+    border: VAR.$btn-border-width solid transparent;
+    border-color: var(--border-color);
+    border-radius: VAR.$btn-border-radius;
+    transition: 0.15s;
+
+    &:hover {
+        &:not(.disabled, :disabled) {
+            color: var(--color-primary);
+            background: var(--color-primary-4);
+            border-color: var(--color-primary);
+        }
+    }
+
+    &:focus:not(:focus-visible),
+    &:focus {
+        outline: 0;
+
+        &:not(.disabled, :disabled) {
+            box-shadow: 0 0 0 4px var(--shadow-color-text-3);
+        }
+    }
+
+    &.round {
+        border-radius: 9999px;
+    }
+
+    &.disabled,
+    &:disabled {
+        &::after {
+            position: absolute;
+            top: -#{VAR.$btn-border-width};
+            right: -#{VAR.$btn-border-width};
+            bottom: -#{VAR.$btn-border-width};
+            left: -#{VAR.$btn-border-width};
+            z-index: 1;
+            cursor: not-allowed;
+            content: '';
+            background: rgba($color: #fff, $alpha: 0.3);
+        }
+    }
+
+    @each $name in VAR.$btn-colors {
+        &.btn-#{$name} {
+            color: #fff;
+            background: var(--color-#{$name});
+            border-color: var(--color-#{$name});
+
+            &:hover,
+            &:focus,
+            &:active {
+                &:not(.disabled, :disabled, .text, .plain) {
+                    color: #fff;
+                    background: var(--color-#{$name}-2);
+                    border-color: var(--color-#{$name}-2);
+                }
+            }
+
+            &:focus {
+                &:not(.disabled, :disabled) {
+                    box-shadow: 0 0 0 4px var(--shadow-color-#{$name}-3);
+                }
+            }
+
+            &.plain {
+                color: var(--color-#{$name});
+                background: transparent;
+
+                &:hover,
+                &:focus,
+                &:active {
+                    &:not(.disabled, :disabled) {
+                        color: #fff;
+                        background: var(--color-#{$name});
+                        border-color: var(--color-#{$name});
+                    }
+                }
+            }
+
+            &.text {
+                color: var(--color-#{$name});
+
+                &:hover,
+                &:focus,
+                &:active {
+                    &:not(.disabled, :disabled) {
+                        color: var(--color-#{$name}-3);
+                    }
+                }
+            }
+        }
+    }
+
+    &.text {
+        &,
+        &:hover,
+        &:focus,
+        &:active {
+            background: transparent;
+            border: 0;
+            box-shadow: 0;
+        }
+    }
+}
+
+// Button group
+.b-btn-group {
+    position: relative;
+    display: inline-flex;
+
+    .b-btn {
+        border-radius: 0;
+
+        &:focus,
+        &.plain:hover {
+            z-index: 1;
+        }
+    }
+
+    &:not(.vertical) {
+        .b-btn {
+            &:not(:first-child) {
+                margin-left: -#{VAR.$btn-border-width};
+            }
+
+            &:first-child {
+                border-top-left-radius: VAR.$btn-border-radius;
+                border-bottom-left-radius: VAR.$btn-border-radius;
+            }
+
+            &:last-child {
+                border-top-right-radius: VAR.$btn-border-radius;
+                border-bottom-right-radius: VAR.$btn-border-radius;
+            }
+        }
+    }
+
+    &.vertical {
+        flex-flow: column;
+
+        .b-btn {
+            &:not(:first-child) {
+                margin-top: -#{VAR.$btn-border-width};
+            }
+
+            &:first-child {
+                border-top-left-radius: VAR.$btn-border-radius;
+                border-top-right-radius: VAR.$btn-border-radius;
+            }
+
+            &:last-child {
+                border-bottom-right-radius: VAR.$btn-border-radius;
+                border-bottom-left-radius: VAR.$btn-border-radius;
+            }
+        }
+    }
+}

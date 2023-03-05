@@ -1,0 +1,34 @@
+/** @format */
+
+$color-primary: #e14e6f;
+$color-secondary: #57b2b0;
+$color-success: #4fe066;
+$color-warning: #e0d965;
+
+$colorNames: (
+    'primary': $color-primary,
+    'secondary': $color-secondary,
+    'success': $color-success,
+    'warning': $color-warning,
+);
+
+@mixin createColor() {
+    @each $name, $color in $colorNames {
+        @for $i from 1 through 5 {
+            @if ($i == 1) {
+                #{--color}-#{$name}: $color;
+            } @else {
+                #{--color}-#{$name}-#{$i}: scale-color(
+                    $color,
+                    $lightness: $i * 19%
+                );
+            }
+        }
+        @for $i from 1 through 5 {
+            #{--color}-#{$name}-dark-#{$i}: scale-color(
+                $color,
+                $lightness: $i * -10%
+            );
+        }
+    }
+}

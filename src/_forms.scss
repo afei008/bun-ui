@@ -1,0 +1,108 @@
+/** @format */
+
+@use './variables' as VAR;
+
+.b-form {
+    &.form-inline {
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: -10px;
+        margin-left: -10px;
+
+        & > .form-group {
+            display: flex;
+            flex: none;
+            align-items: center;
+            padding: 0 10px;
+
+            & > .form-label {
+                margin: 0 1rem;
+            }
+        }
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+
+        & > .form-label {
+            margin-bottom: 0.5rem;
+
+            &[class*='b-col'] {
+                padding: 0.375rem 0;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .form-control {
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+        padding: 0.375rem 0.75rem;
+        line-height: 1.5;
+        color: VAR.$text-color;
+        background-color: VAR.$white;
+        border: 1px solid VAR.$border-base;
+        border-radius: VAR.$btn-border-radius;
+
+        &::placeholder {
+            color: VAR.$text-placeholder;
+        }
+
+        &:focus:not(:focus-visible),
+        &:focus {
+            outline: 0;
+        }
+
+        &:focus {
+            border-color: darken(VAR.$primary, 5%);
+            box-shadow: 0 0 0 0.25rem rgba(VAR.$primary, 0.5);
+        }
+
+        &:disabled,
+        &[readonly] {
+            background-color: #e9ecef;
+            opacity: 1;
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+        }
+    }
+
+    .form-text {
+        margin-top: 0.25rem;
+        font-size: 0.875rem;
+        color: VAR.$text-secondary;
+    }
+
+    .form-check {
+        padding-left: 1.5rem;
+        margin-bottom: 0.25rem;
+
+        .form-label {
+            cursor: pointer;
+        }
+
+        .form-input {
+            position: absolute;
+            margin-top: 0.3rem;
+            margin-left: -1.5rem;
+
+            &:checked {
+                background-color: VAR.$primary;
+                border-color: VAR.$primary;
+            }
+
+            &:disabled + .form-label {
+                cursor: not-allowed;
+            }
+        }
+    }
+
+    .form-check-inline {
+        display: inline-block;
+        margin-right: 1rem;
+        margin-bottom: 0;
+    }
+}

@@ -1,0 +1,73 @@
+/** @format */
+
+// Variables
+
+$default: #c0c4cc !default;
+$primary: #409eff !default;
+$primary-light: scale-color($primary, $lightness: 80%);
+$primary-lighter: scale-color($primary, $lightness: 90%);
+$success: #67c23a !default;
+$success-light: scale-color($success, $lightness: 80%);
+$success-lighter: scale-color($success, $lightness: 90%);
+$warning: #e6a23c !default;
+$warning-light: scale-color($warning, $lightness: 80%);
+$warning-lighter: scale-color($warning, $lightness: 90%);
+$danger: #f56c6c !default;
+$danger-light: scale-color($danger, $lightness: 80%);
+$danger-lighter: scale-color($danger, $lightness: 90%);
+$info: #909399 !default;
+$info-light: scale-color($info, $lightness: 80%);
+$info-lighter: scale-color($info, $lightness: 90%);
+$white: #fff !default;
+$black: #000 !default;
+
+$text-primary: #303133 !default;
+$text-regular: #606266 !default;
+$text-secondary: #909399 !default;
+$text-placeholder: #c0c4cc !default;
+
+$border-base: #dcdfe6 !default;
+$border-light: #e4e7ed !default;
+$border-lighter: #ebeef5 !default;
+$border-extra: #f2f6fc !default;
+
+$theme-colors: (
+    'primary': $primary,
+    'primary-light': $primary-light,
+    'primary-lighter': $primary-lighter,
+    'success': $success,
+    'success-light': $success-light,
+    'success-lighter': $success-lighter,
+    'warning': $warning,
+    'warning-light': $warning-light,
+    'warning-lighter': $warning-lighter,
+    'danger': $danger,
+    'danger-light': $danger-light,
+    'danger-lighter': $danger-lighter,
+    'info': $info,
+    'info-light': $info-light,
+    'info-lighter': $info-lighter,
+) !default;
+
+$button-colors: (
+    'default': $default,
+    'primary': $primary,
+    'success': $success,
+    'warning': $warning,
+    'danger': $danger,
+    'info': $info,
+) !default;
+
+// Typography
+$line-height-base: 1.5 !default;
+$font-size-base: 1rem !default;
+$text-color: $text-regular !default;
+
+// Grid
+$grid-columns: 12 !default;
+
+// Button
+$btn-border-width: 1px !default;
+$btn-border-radius: 0.25rem !default;
+$btn-font-size: $font-size-base !default;
+$btn-line-height: $line-height-base !default;

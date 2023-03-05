@@ -1,0 +1,16 @@
+/** @format */
+
+$border-color: #cdcecf;
+
+@mixin createBorderColor() {
+    @for $i from 1 through 5 {
+        @if ($i == 1) {
+            #{--border-color}: $border-color;
+        } @else {
+            #{--border-color}-#{$i}: scale-color(
+                $border-color,
+                $lightness: $i * 10%
+            );
+        }
+    }
+}

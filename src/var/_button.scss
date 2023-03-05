@@ -1,0 +1,11 @@
+/** @format */
+
+@use './color' as VAR;
+
+$btn-border-width: 1px !default;
+$btn-border-radius: 4px !default;
+$btn-font-size: 14px !default;
+$btn-line-height: 1 !default;
+$btn-padding: 10px 20px !default;
+
+$btn-colors: 'primary', 'success', 'warning';

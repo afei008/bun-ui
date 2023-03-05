@@ -1,0 +1,23 @@
+/** @format */
+
+@use './text' as T;
+@use './color' as C;
+
+$shadowNames: (
+    'primary': C.$color-primary,
+    'secondary': C.$color-secondary,
+    'success': C.$color-success,
+    'warning': C.$color-warning,
+    'text': T.$text-color,
+);
+
+@mixin createShadowColor() {
+    @each $name, $color in $shadowNames {
+        @for $i from 1 through 5 {
+            #{--shadow-color}-#{$name}-#{$i}: rgba(
+                $color: scale-color($color, $lightness: $i * -10%),
+                $alpha: 0.3
+            );
+        }
+    }
+}
