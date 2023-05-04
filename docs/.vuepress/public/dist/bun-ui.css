@@ -470,33 +470,43 @@ label {
 .b-row.g-4 {
   column-gap: 4px;
 }
+
 .b-row.g-8 {
   column-gap: 8px;
 }
+
 .b-row.g-12 {
   column-gap: 12px;
 }
+
 .b-row.g-16 {
   column-gap: 16px;
 }
+
 .b-row.g-20 {
   column-gap: 20px;
 }
+
 .b-row.g-24 {
   column-gap: 24px;
 }
+
 .b-row.g-28 {
   column-gap: 28px;
 }
+
 .b-row.g-32 {
   column-gap: 32px;
 }
+
 .b-row.g-36 {
   column-gap: 36px;
 }
+
 .b-row.g-40 {
   column-gap: 40px;
 }
+
 /** @format */
 .b-btn {
   position: relative;
