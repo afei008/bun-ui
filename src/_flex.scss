@@ -19,21 +19,21 @@
 }
 
 @mixin make-flex($i, $columns) {
-    .b-row {
-        .b-col-#{$i} {
-            flex: 0 0 calc(100% * #{$i} / #{$columns});
-            max-width: calc(100% * #{$i} / #{$columns});
-        }
-        [class*='b-col'].offset-#{$i} {
-            margin-left: calc(100% * #{$i} / #{$columns});
-        }
+    .b-col-#{$i} {
+        flex: 0 0 calc(100% * #{$i} / #{$columns});
+        max-width: calc(100% * #{$i} / #{$columns});
+    }
+    [class*='b-col'].offset-#{$i} {
+        margin-left: calc(100% * #{$i} / #{$columns});
     }
 }
 
 @mixin make-flex-columns($columns) {
     @for $i from 1 through $columns {
         @if ($columns == 12) {
-            @include make-flex($i, $columns);
+            .b-row > {
+                @include make-flex($i, $columns);
+            }
         } @else {
             .b-row-#{$columns} > {
                 @include make-flex($i, $columns);
