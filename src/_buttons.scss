@@ -11,7 +11,7 @@
     padding: VAR.$btn-padding;
     font-size: VAR.$btn-font-size;
     line-height: VAR.$btn-line-height;
-    color: var(--text-color-5);
+    color: var(--text-color-3);
     text-align: center;
     text-decoration: none;
     vertical-align: middle;
@@ -24,9 +24,9 @@
     transition: 0.15s;
 
     &:hover {
-        &:not(.disabled, :disabled) {
+        &:not(.disabled, :disabled, .plain) {
             color: var(--color-primary);
-            background: var(--color-primary-4);
+            background: var(--color-primary-light-4);
             border-color: var(--color-primary);
         }
     }
@@ -36,7 +36,15 @@
         outline: 0;
 
         &:not(.disabled, :disabled) {
-            box-shadow: 0 0 0 4px var(--shadow-color-text-3);
+            box-shadow: 0 0 0 2px var(--shadow-color-primary-3);
+        }
+    }
+
+    &.plain {
+        &:hover {
+            color: var(--color-primary);
+            background: transparent;
+            border-color: var(--color-primary);
         }
     }
 
@@ -70,14 +78,14 @@
             &:active {
                 &:not(.disabled, :disabled, .text, .plain) {
                     color: #fff;
-                    background: var(--color-#{$name}-2);
-                    border-color: var(--color-#{$name}-2);
+                    background: var(--color-#{$name}-light-2);
+                    border-color: var(--color-#{$name}-light-2);
                 }
             }
 
             &:focus {
                 &:not(.disabled, :disabled) {
-                    box-shadow: 0 0 0 4px var(--shadow-color-#{$name}-3);
+                    box-shadow: 0 0 0 2px var(--shadow-color-#{$name}-3);
                 }
             }
 
@@ -103,7 +111,7 @@
                 &:focus,
                 &:active {
                     &:not(.disabled, :disabled) {
-                        color: var(--color-#{$name}-3);
+                        color: var(--color-#{$name}-light-3);
                     }
                 }
             }
@@ -117,7 +125,13 @@
         &:active {
             background: transparent;
             border: 0;
-            box-shadow: 0;
+            box-shadow: none;
+        }
+
+        &:hover {
+            &:not(.disabled, :disabled) {
+                color: var(--text-color-4);
+            }
         }
     }
 }

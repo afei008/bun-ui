@@ -1,14 +1,13 @@
 /** @format */
 
-@use './text' as T;
 @use './color' as C;
 
 $shadowNames: (
     'primary': C.$color-primary,
-    'secondary': C.$color-secondary,
     'success': C.$color-success,
     'warning': C.$color-warning,
-    'text': T.$text-color,
+    'danger': C.$color-danger,
+    'info': C.$color-info,
 );
 
 @mixin createShadowColor() {

@@ -1,6 +1,8 @@
 /** @format */
 
-@use './variables' as VAR;
+@use './var/color' as COLOR;
+@use './var/border' as BORDER;
+@use './var/button' as BUTTON;
 
 .b-form {
     &.form-inline {
@@ -26,83 +28,115 @@
 
         & > .form-label {
             margin-bottom: 0.5rem;
-
-            &[class*='b-col'] {
-                padding: 0.375rem 0;
-                margin-bottom: 0;
-            }
         }
     }
 
-    .form-control {
+    .form-content {
+        position: relative;
         box-sizing: border-box;
-        display: block;
-        width: 100%;
-        padding: 0.375rem 0.75rem;
-        line-height: 1.5;
-        color: VAR.$text-color;
-        background-color: VAR.$white;
-        border: 1px solid VAR.$border-base;
-        border-radius: VAR.$btn-border-radius;
 
-        &::placeholder {
-            color: VAR.$text-placeholder;
-        }
+        input,
+        button,
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.375rem 0.75rem;
+            line-height: 1.5;
+            color: var(--text-color);
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: BUTTON.$btn-border-radius;
+            appearance: none;
 
-        &:focus:not(:focus-visible),
-        &:focus {
-            outline: 0;
-        }
-
-        &:focus {
-            border-color: darken(VAR.$primary, 5%);
-            box-shadow: 0 0 0 0.25rem rgba(VAR.$primary, 0.5);
-        }
-
-        &:disabled,
-        &[readonly] {
-            background-color: #e9ecef;
-            opacity: 1;
-        }
-
-        &:disabled {
-            cursor: not-allowed;
-        }
-    }
-
-    .form-text {
-        margin-top: 0.25rem;
-        font-size: 0.875rem;
-        color: VAR.$text-secondary;
-    }
-
-    .form-check {
-        padding-left: 1.5rem;
-        margin-bottom: 0.25rem;
-
-        .form-label {
-            cursor: pointer;
-        }
-
-        .form-input {
-            position: absolute;
-            margin-top: 0.3rem;
-            margin-left: -1.5rem;
-
-            &:checked {
-                background-color: VAR.$primary;
-                border-color: VAR.$primary;
+            &::placeholder {
+                color: var(--text-color-4);
             }
 
-            &:disabled + .form-label {
+            &:focus:not(:focus-visible),
+            &:focus {
+                outline: 0;
+            }
+
+            &:focus {
+                border-color: var(--color-primary-light-3);
+                box-shadow: 0 0 0 0.15rem rgba(COLOR.$color-primary, 0.2);
+            }
+        }
+
+        &.disabled {
+            &::after {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 1;
                 cursor: not-allowed;
+                content: '';
+            }
+
+            input,
+            button,
+            select,
+            textarea,
+            label {
+                pointer-events: none;
             }
         }
     }
 
-    .form-check-inline {
-        display: inline-block;
-        margin-right: 1rem;
-        margin-bottom: 0;
+    .b-select {
+        position: relative;
+
+        select {
+            appearance: none;
+            padding-right: 2rem;
+        }
+
+        &::after {
+            position: absolute;
+            top: 50%;
+            right: 0.75rem;
+            font-size: 1rem;
+            line-height: 1;
+            content: '>';
+            transform: translateY(-50%) rotate(90deg);
+        }
+
+        &:has(select[multiple])::after {
+            content: '';
+        }
+    }
+
+    .form-checkbox {
+        position: relative;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        &::before {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 15px;
+            height: 15px;
+            margin-right: 10px;
+            font-size: 12px;
+            content: '';
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: BUTTON.$btn-border-radius;
+        }
+
+        &:has(input[type='radio'])::before {
+            border-radius: 50%;
+        }
+
+        &:has(input:checked)::before {
+            color: #fff;
+            content: '√';
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+        }
     }
 }

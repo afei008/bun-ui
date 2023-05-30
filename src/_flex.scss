@@ -1,0 +1,57 @@
+/** @format */
+
+@use 'sass:math';
+@use './var/grid' as VAR;
+
+// Flex
+
+.b-row {
+    display: flex;
+    flex-wrap: wrap;
+
+    [class*='b-col'] {
+        position: relative;
+    }
+
+    .b-col {
+        flex: 1;
+    }
+}
+
+@mixin make-flex($i, $columns) {
+    .b-row {
+        .b-col-#{$i} {
+            flex: 0 0 calc(100% * #{$i} / #{$columns});
+            max-width: calc(100% * #{$i} / #{$columns});
+        }
+        [class*='b-col'].offset-#{$i} {
+            margin-left: calc(100% * #{$i} / #{$columns});
+        }
+    }
+}
+
+@mixin make-flex-columns($columns) {
+    @for $i from 1 through $columns {
+        @if ($columns == 12) {
+            @include make-flex($i, $columns);
+        } @else {
+            .b-row-#{$columns} > {
+                @include make-flex($i, $columns);
+            }
+        }
+    }
+}
+
+@include make-flex-columns(VAR.$grid-columns);
+@include make-flex-columns(10);
+
+@for $counter from 1 through 10 {
+    $gutter-num: (4 * $counter);
+    $gutter: 1px * $gutter-num;
+
+    .b-row.gap-#{$gutter-num} {
+        // 该属性需要较新版的浏览器才支持，此时如果指定子项宽度，则会超出 row
+        // 为了避免无用的样式过多，因此不写指定子项宽度的代码，如有需要自行计算或使用 grid
+        column-gap: $gutter;
+    }
+}

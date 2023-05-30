@@ -9,7 +9,7 @@ $text-color: #303132;
         } @else {
             #{--text-color}-#{$i}: scale-color(
                 $text-color,
-                $lightness: $i * 10%
+                $lightness: $i * 15%
             );
         }
     }

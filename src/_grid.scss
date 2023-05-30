@@ -5,26 +5,24 @@
 
 // Grid
 
-.b-row {
-    display: flex;
-    flex-wrap: wrap;
+.b-grid {
+    display: grid;
+    grid-template-rows: repeat(var(--bs-rows, 1), 1fr);
+    grid-template-columns: repeat(var(--bs-columns, 12), 1fr);
 
     [class*='b-col'] {
         position: relative;
     }
-
-    .b-col {
-        flex: 1;
-    }
 }
 
 @mixin make-grid($i, $columns) {
-    .b-col-#{$i} {
-        flex: 0 0 calc(100% * #{$i} / #{$columns});
-        max-width: calc(100% * #{$i} / #{$columns});
-    }
-    [class*='b-col'].offset-#{$i} {
-        margin-left: calc(100% * #{$i} / #{$columns});
+    .b-grid {
+        .b-col-#{$i} {
+            grid-column: auto/span #{$i};
+        }
+        [class*='b-col'].offset-#{$i} {
+            grid-column-start: $i;
+        }
     }
 }
 
@@ -41,34 +39,12 @@
 }
 
 @include make-grid-columns(VAR.$grid-columns);
-@include make-grid-columns(10);
 
 @for $counter from 1 through 10 {
     $gutter-num: (4 * $counter);
     $gutter: 1px * $gutter-num;
 
-    .b-row.g-#{$gutter-num} {
-        // 该属性需要较新版的浏览器才支持，此时如果指定子项宽度，则会超出 row
-        column-gap: $gutter;
-        // margin-right: if($counter == 0, 0, math.div(-$gutter, 2));
-        // margin-left: if($counter == 0, 0, math.div(-$gutter, 2));
-
-        & > [class*='b-col-'] {
-            // padding-right: if($counter == 0, 0, math.div($gutter, 2));
-            // padding-left: if($counter == 0, 0, math.div($gutter, 2));
-        }
-
-        // @for $i from 1 through 12 {
-        //     & > {
-        //         &:nth-child(1):nth-last-child(4),
-        //         &:nth-child(2):nth-last-child(3) {
-        //             $len: $gutter - math.div($gutter, 4);
-        //             &.b-col-#{$i} {
-        //                 flex: 0 0 calc(calc(100% * #{$i} / 12) - $len);
-        //                 max-width: calc(calc(100% * #{$i} / 12) - $len);
-        //             }
-        //         }
-        //     }
-        // }
+    .b-grid.gap-#{$gutter-num} {
+        gap: $gutter;
     }
 }
